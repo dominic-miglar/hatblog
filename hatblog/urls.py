@@ -20,7 +20,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
 
     url(r'^grappelli/', include('grappelli.urls')),
-    url(r'^admin/', include(admin.site.urls), name='management'),
+    url(r'^admin/', include(admin.site.urls), namespace='hatblog' name='management'),
     url(r'^' + blog_url, include('hatblog.weblog.urls', namespace='hatblog', app_name='weblog')),
     url(r'^$', redirect_to, {'url': blog_url}),
 )
