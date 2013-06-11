@@ -22,6 +22,6 @@ urlpatterns = patterns('',
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^' + blog_url, include('hatblog.weblog.urls', namespace='hatblog', app_name='weblog')),
-    url(r'^/$', redirect_to, {'url': blog_url}),
+    url(r'^$', redirect_to, {'url': blog_url}),
 )
 
