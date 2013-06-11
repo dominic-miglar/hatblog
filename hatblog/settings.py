@@ -189,3 +189,9 @@ JABBER_ID = 'hatblog@w1r3.net'
 JABBER_PASSWORD = 'bla'
 JABBER_MSG_RECIPIENT = 'firehat@w1r3.net'
 
+# loads the production values from the settings file
+try:
+    from hatblog.local_settings import *
+except ImportError:
+    pass
+
