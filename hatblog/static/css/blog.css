@@ -1,0 +1,340 @@
+html, body {
+	height: 100%;
+	background-color: #343434;
+	color: #cccccc;
+	min-width: 1100px;
+	font-family:"Courier New","Terminal","monospace";
+}
+
+#wrapper {
+	min-height: 100%
+}
+
+#header {
+	height: 65px;
+	background-color: #151515;
+	width: 100%;
+}
+
+/* DEBUG BEGIN */
+
+#header h1 {
+	font-size: 22pt;
+}
+
+/* DEBUG END */
+
+#headercontent {
+	margin: 0 auto;
+	width: 1100px;
+}
+
+#headercontent ul {
+	margin: 0;
+	padding: 0;
+	padding-top: 15px;
+}
+
+#headercontent li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: inline;
+	margin-right: 55px;
+}
+
+#headercontent h1 {
+	display: inline;
+	margin: 0;
+}
+
+#headercontent h1#active
+{
+	color: #CDA869;
+}
+
+#headercontent a:link, 
+#headercontent a:visited
+{
+	text-decoration: none;
+	color: #8F9D6A;
+}
+
+#headercontent a:hover
+{
+	/*text-decoration: underline;*/
+	color: #CDA869;
+}
+
+
+#footer {
+	/* DEBUG */
+	/* height:70px; */
+	/* ENDDEBUG */
+	height: 24px;
+	width: 100%;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	background-color: #151515;
+}
+
+#footercontent {
+	margin: 0 auto;
+	width: 1100px;
+	/* DEBUG */
+	/*color: #8F9D6A;*/
+	color: #ffffff;
+	/* ENDDEBUG */
+}
+
+#footercontent a:link, 
+#footercontent a:visited
+{
+	text-decoration: none;
+	color: #8F9D6A;
+}
+
+#footercontent a:hover
+{
+	text-decoration: underline;
+}
+
+#footercontent p {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+
+
+#precontainer {
+	padding-bottom: 70px;
+}
+
+#container {
+	margin: 20px auto;
+	width: 1100px;
+	overflow: hidden;
+}
+
+
+
+
+#posts {
+	margin: 10px;
+	width: 780px;
+	float: left;
+}
+
+.post {
+	margin-bottom: 50px;
+}
+
+.postheader {
+	color: #ffffff;
+	/* border-bottom: 1px solid #cccccc; */ /* DEBUG */
+	padding-bottom: 5px;
+}
+
+.postheader a:link, 
+.postheader a:visited
+{
+	text-decoration: none;
+	color: #CDA869;
+}
+
+.postheader a:hover
+{
+	text-decoration: underline;
+}
+
+.postheader p a:link, 
+.postheader p a:visited
+{
+	text-decoration: none;
+	color: #ffffff;
+}
+
+.postheader p a:hover
+{
+	text-decoration: underline;
+}
+
+.postheader h1 {
+	margin: 0;
+	/*font-size: 20pt;*/ /* DEBUG */
+	font-size: 18pt; /* --- */
+	color: #CDA869;
+}
+.postheader p {
+	font-size: 10pt;
+	margin: 0;
+	text-align: right; /* DEBUG */
+}
+
+.postcontent {
+	padding: 10px;
+	padding-left: 0; /* DEBUG */
+	font-size: 12pt; /* DEBUG */ 
+}
+
+.postcontent a:link {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.postcontent a:visited {
+	color: #ffffff;
+	font-style: italic;
+}
+
+.postcontent a:hover {
+	text-decoration: underline;
+}
+
+.postfooter {
+	/* border-top: 1px solid #cccccc; */ /* DEBUG */
+	margin-top: 10px;
+	color: #ffffff;
+}
+
+.postfooter a:link, 
+.postfooter a:visited
+{
+	text-decoration: none;
+	color: #ffffff;
+}
+
+.postfooter a:hover
+{
+	text-decoration: underline;
+}
+
+
+.postfooter p {
+	padding-top: 5px;
+	font-size: 10pt;
+	margin: 0;
+	text-align: right; /* DEBUG */
+}
+
+.comments h2 {
+	margin-top: 50px;
+	color: #CDA869;
+	font-size: 16pt;
+}
+
+#stats {
+	margin: 10px;
+	margin-left: 818px;
+	padding-left: 10px;
+	padding-right: 100px;
+	width: 279px;
+	/* DEBUG 
+	border-left: 1px solid #151515;
+	*/
+}
+
+#stats h2 {
+	font-weight: bold;
+	font-size: 12pt;
+	color: #CDA869;
+}
+
+#stats h3 {
+	font-weight: bold;
+	font-size: 8pt;
+	margin-bottom: 0;
+}
+
+#stats p, 
+#stats a {
+	font-size: 10pt;
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+#stats a:link,
+#stats a:visited 
+{
+	color: #ffffff;
+	text-decoration: none;
+}
+
+#stats a:hover {
+	text-decoration: underline;
+}
+
+#stats ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.stat {
+	margin-bottom: 35px;
+}
+
+#social {
+	margin-bottom: 10px;
+}
+
+#social img {
+	margin-right: 15px;
+}
+
+#social p {
+	margin-bottom: 5px;
+}
+
+#social a:hover
+{
+	text-decoration: none;
+}
+
+.information {
+	background-color: #151515;
+	padding: 5px;
+	border: 1px solid #8F9D6A;
+	margin-bottom: 50px;
+}
+ 
+.information p {
+	margin: 0;
+	padding: 0;
+	font-style: italic;
+}
+
+.newcomment {
+	margin-top: 50px;
+}
+
+.newcomment table tr {
+	padding-bottom: 5px;
+	display: block;
+}
+
+.newcomment table th {
+	width: 100px;
+	text-align: left;
+}
+
+.newcomment h2 {
+
+}
+
+#contactform {
+	margin-top: 50px;
+}
+
+#contactform table tr {
+	padding-bottom: 5px;
+	display: block;
+}
+
+#contactform table th {
+	width: 100px;
+	text-align: left;
+}
+

@@ -1,0 +1,33 @@
+{% extends "weblog/base.html" %}
+
+{% block blogentries %}
+{% if contacted %}
+<div class='information'>
+	<p>Thank you. The message was sent to firehat.</p>
+</div>
+{% endif %}
+	<div class="post">
+		<div class="postheader">
+			<h1>
+				<a href="{% url hatblog:contact %}">
+					~/contact
+				</a> $ 
+			</h1>
+		</div>
+		<div class="postcontent">
+			<p>
+				If you have any questions regarding the content of this blog please do not hesitate to contact me with the contact form down here.
+			</p>
+			<div id='contactform'>
+				<section>
+		    		<form method="post" action=".">{% csrf_token %}
+		    			<table>
+		    				{{ form.as_table }}
+		    			</table>
+		    			<input type="submit" value="Submit comment" />
+		    		</form>
+	  			</section>
+  			</div>
+		</div>
+	</div>
+{% endblock %}

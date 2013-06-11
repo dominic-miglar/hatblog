@@ -1,0 +1,138 @@
+{% load staticfiles %}
+
+<DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8">
+        <title>
+            {% block title %}firehat@blog:~/{% endblock %}
+        </title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/blog.css' %}" />
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="header">
+                <div id="headercontent">
+                    {% block header %}
+                        <ul>
+                            <li>
+                                <h1>
+                                    <a href="{% url hatblog:home %}">
+                                        ~/
+                                    </a>
+                                </h1>
+                            </li>
+                        {% for category in main_categories %}
+                            <li>
+                                <a href="{% url hatblog:home %}?category={{ category.name }}">
+                                    {% if category.name == category_active %}
+                                    <h1 id="active">~/{{ category.name }}</h1>
+                                    {% else %}
+                                    <h1>~/{{ category.name }}</h1>
+                                    {% endif %}
+                                </a>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    {% endblock %}
+                </div>
+            </div>
+            <div id="precontainer">
+                <div id="container">
+                    <div id="posts">
+                        {% block blogentries %}
+                        {% endblock %}
+                    </div>
+                    <div id="stats">
+                        {% block sidebar %}
+                            {% if user.is_authenticated %}
+                                <div class="stat">
+                                        <p>
+                                            Welcome, {{ user.username }}.<br/>
+                                            Go to the <a href="{% url hatblog:management %}">management console</a>
+                                            or <a href="{% url hatblog:logout %}">logout</a>.
+                                        </p>                                    
+                                </div>
+                            {% endif %}
+                            <div class="stat">
+                                {% if latest_blog_entries %}
+                                    <h2>Last five posts</h2>
+                                    {% for entry in latest_blog_entries %}
+                                        <h3>
+                                            {{ entry.dateCreated|date:"r" }}<br />
+                                            in ~/{{ entry.category.name }}
+                                        </h3>
+                                        <p>
+                                            <a href="{% url hatblog:blogentry_detail entry.dateCreated|date:"Y" entry.dateCreated|date:"m" entry.dateCreated|date:"d" entry.id entry.slug %}">
+                                                <b>$ {{ entry.subject }}</b>
+                                            </a>
+                                        </p>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <div class="stat">
+                                <h2>Categories</h2>
+                                {% if categories %}
+                                    <ul>
+                                        {% for category in categories %}
+                                            <li>
+                                                <a href="{% url hatblog:home %}?category={{ category.name }}">
+                                                    ~/{{ category.name }}
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    <p>No categories are available yet.</p>
+                                {% endif %}
+                            </div>
+                            <div class="stat">
+                                <h2>Social</h2>
+                                <div id="social">
+                                    <p>Meet me on social networks</p>
+                                    <a href="https://github.com/w4rl0ck/">
+                                        <img alt="github" src="{{ STATIC_URL }}images/social/githubmark.png" />
+                                    </a>
+                                    <a href="https://twitter.com/f1r3h4t">
+                                        <img alt="twitter" src="{{ STATIC_URL }}images/social/twitter.png" />
+                                    </a>
+                                    <a href="https://pod.geraspora.de/u/w4rl0ck">
+                                        <img alt="geraspora" src="{{ STATIC_URL }}images/social/geraspora.png" />
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <h2>Friends</h2>
+                                <p>
+                                    <a href="https://www.w1r3.net/">
+                                        <b>w1r3.net</b>
+                                    </a>
+                                    - A community which follows its target to provide 
+                                    services to make the internet more free and authentic.
+                                </p>
+                            </div>
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+            <div id="footer">
+                <div id="footercontent">
+                    <p>
+                        <a href='{% url hatblog:impressum %}'>
+                            Impressum
+                        </a> | 
+                        <a href='{% url hatblog:contact %}'>
+                            Kontakt
+                        </a> | 
+                        <a href='https://www.djangoproject.com/'>
+                            Powered by Django
+                        </a> |
+                        Copyright &copy; 2013 by firehat@netunix.at
+                    </p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

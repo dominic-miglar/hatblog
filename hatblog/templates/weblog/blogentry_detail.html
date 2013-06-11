@@ -1,0 +1,72 @@
+{% extends "weblog/base.html" %}
+
+{% block blogentries %}
+{% if commented %}
+<div class='information'>
+	<p>Thank you. Your comment was submitted.</p>
+</div>
+{% endif %}
+
+<div class="post">
+	<div class="postheader">
+		<h1>				
+			<a href="{% url hatblog:home %}?category={{ entry.category.name }}">
+				~/{{ entry.category.name }}
+			</a> $ 
+			<a href="{% url hatblog:blogentry_detail entry.dateCreated|date:"Y" entry.dateCreated|date:"m" entry.dateCreated|date:"d" entry.id entry.slug %}">
+				{{ entry.subject }}
+			</a>
+		</h1>
+		<p>Written by firehat on 
+			<a href="{% url hatblog:year_archive entry.dateCreated|date:"Y" %}">
+				{{ entry.dateCreated|date:"Y" }}
+			</a>/
+			<a href="{% url hatblog:month_archive entry.dateCreated|date:"Y" entry.dateCreated|date:"m" %}">
+				{{ entry.dateCreated|date:"m" }}
+			</a>/
+			<a href="{% url hatblog:day_archive entry.dateCreated|date:"Y" entry.dateCreated|date:"m" entry.dateCreated|date:"d" %}">
+				{{ entry.dateCreated|date:"d" }}
+			</a>
+			- {{ entry.dateCreated|date:"P" }}
+		</p>
+	</div>
+	<div class="postcontent">
+		{{ entry.text }}
+	</div>
+	<div class="postfooter">
+		<p>
+			Last edited on {{ entry.dateModified|date:"Y" }} / {{ entry.dateModified|date:"m" }} / {{ entry.dateModified|date:"d" }} - {{ entry.dateModified|date:"P" }}
+		</p>
+		<div class='comments'>
+			{% if comment == None %}
+			<h2>Comments</h2>
+			{% for comment in comments %}
+			<div class='comment'>
+				<div class='postheader'>
+					<p>
+						{{ comment.name }} - <b>{{ comment.subject }}</b> - {{ comment.dateCreated|date:"r" }}
+					</p>
+				</div>
+				<div class='postcontent'>
+					{{ comment.text }}
+				</div>
+			</div>
+			{% endfor %}
+			{% endif %}
+			<div class='newcomment' name='newcomment'>
+				<h2>New comment:</h2>
+				<form action="." method="post">{% csrf_token %}
+					<table>{{ form.as_table }}</table>
+					<input type="submit" value="Submit comment" />
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+
+
+
+
+
