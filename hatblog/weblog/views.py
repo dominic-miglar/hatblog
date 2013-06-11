@@ -99,7 +99,7 @@ def archive(request, year=None, month=None, day=None):
     return render(request, 'weblog/blog.html', ctx)
 
 
-def blogentry_detail(request, year=None, month=None, day=None, id=None, slug=None, comment=None):
+def blogentry_detail(request, year=None, month=None, day=None, id=None, slug=None):
     entry = BlogEntry.objects.filter(pk=id)
     entry = entry[0]
     comments = Comment.objects.filter(blogEntry__pk=id, isApproved=True)
