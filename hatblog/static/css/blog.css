@@ -193,6 +193,27 @@ html, body {
 	text-decoration: underline;
 }
 
+.postcontent h1 {
+	font-size: 16pt;
+}
+
+.postcontent h2 {
+	font-size: 14pt;
+}
+
+.postcontent h3 {
+	font-size: 14pt;
+	font-weight: normal;
+}
+
+.postcontent h4 {
+	font-size: 12pt;
+}
+
+.postcontent pre {
+	font-size: 10pt;
+}
+
 .postfooter {
 	/* border-top: 1px solid #cccccc; */ /* DEBUG */
 	margin-top: 10px;

@@ -185,9 +185,7 @@ LOGGING = {
 }
 
 # JABBER USER ACCOUNT FOR BLOG
-JABBER_USER = 'hatblog'
+JABBER_ID = 'hatblog@w1r3.net'
 JABBER_PASSWORD = 'bla'
-JABBER_SERVER = 'jabber.w1r3.org'
-JABBER_RESOURCE = 'hatblog'
 JABBER_MSG_RECIPIENT = 'firehat@w1r3.net'
 
