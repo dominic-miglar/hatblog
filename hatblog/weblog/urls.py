@@ -20,7 +20,7 @@ urlpatterns = patterns('',
 
     url(r'^impressum/$', views.impressum, name='impressum'),
     url(r'^contact/$', views.contact, name='contact'),
-    url(r'^management/$', views.management, name='management'),
+    # url(r'^management/$', views.management, name='management'),
     url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'weblog/login.html'}, name='login'),
     url(r'^logout/$', views.logout_page, name='logout'),
 )
