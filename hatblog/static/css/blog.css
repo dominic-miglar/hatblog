@@ -6,6 +6,10 @@ html, body {
 	font-family:"Courier New","Terminal","monospace";
 }
 
+input, select, textarea { 
+	background-color: #b3d4fc;; 
+}
+
 #wrapper {
 	min-height: 100%
 }
