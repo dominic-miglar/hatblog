@@ -26,7 +26,7 @@ def home(request):
         
     if category:
             category = get_object_or_404(Category, name=category)
-            blogentries = BlogEntry.objects.filter(category__name=category)
+            blogentries = BlogEntry.objects.filter(category__name=category.name)
             category_description = Category.objects.filter(name=category)[0].description
     else:
         blogentries = BlogEntry.objects.filter()
@@ -36,7 +36,7 @@ def home(request):
 
     ctx = {
         'entries': blogentries, 
-        'category_active': category.name,
+        'category_active': category,
         'category_description': category_description,
         }
     return render(request, 'weblog/blog.html', ctx)
