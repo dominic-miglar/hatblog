@@ -120,7 +120,10 @@ def blogentry_detail(request, year=None, month=None, day=None, id=None, slug=Non
             comment.text = form.cleaned_data['text']
             comment.save()
             commented = True
-            jabber_notify('New comment for blog post %s from %s:\n%s' % (comment.blogEntry.subject, comment.name, comment.text))
+            jabber_notify(
+                'New comment for blog post <b>%s</b> from <b>%s</b>:\n%s\n%s\n\nE-Mail:%s' % 
+                (comment.blogEntry.subject, comment.name, comment.subject, comment.text, comment.email)
+            )
 
     else:
         form = CommentForm()
