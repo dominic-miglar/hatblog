@@ -28,6 +28,7 @@ def home(request):
             category = get_object_or_404(Category, name=category)
             blogentries = BlogEntry.objects.filter(category__name=category.name)
             category_description = Category.objects.filter(name=category)[0].description
+            category = category.name # vorbereitung fuer category_active im ctx
     else:
         blogentries = BlogEntry.objects.filter()
         category_description = None
