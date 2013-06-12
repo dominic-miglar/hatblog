@@ -11,6 +11,6 @@ def jabber_notify(message):
 		return
 	if cl.auth(jid.getNode(), JABBER_PASSWORD) == None:
 		return
-	cl.send(xmpp.protocol.Message('firehat@w1r3.net', message))
+	cl.send(xmpp.protocol.Message(JABBER_MSG_RECIPIENT, message))
 	cl.disconnect()
 

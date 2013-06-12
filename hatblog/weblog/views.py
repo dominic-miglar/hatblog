@@ -16,11 +16,9 @@ from django.core.mail import send_mail, EmailMessage
 from hatblog.weblog.models import BlogEntry, Category, Comment
 from hatblog.weblog.forms import CommentForm, ContactForm
 from hatblog.weblog.jabber_notify import jabber_notify
-
+from hatblog.settings import EMAIL_FROM, EMAIL_RECIPIENT
 
 def home(request):
-    """Renders the home page of the blog. Shows the latest 10 blog posts."""
-
     try:   
         category = request.GET['category']
     except MultiValueDictKeyError:
@@ -123,7 +121,7 @@ def blogentry_detail(request, year=None, month=None, day=None, id=None, slug=Non
             notify_message = 'Hello! A new comment was submitted on hatblog. Details below.\n\nFrom: {}\nE-Mail: {}\n\nBelongs to blog entry: {}\nSubject: {}\n\n{}'.format(
                 comment.name, comment.email, comment.blogEntry.subject, comment.subject, comment.text) 
             jabber_notify(notify_message)
-            send_mail('[hatblog] New comment', notify_message, 'noreply@firehat.w1r3.org', ['firehat@w1r3.net'])
+            send_mail('[hatblog] New comment', notify_message, EMAIL_FROM, [EMAIL_RECIPIENT])
 
     else:
         form = CommentForm()
@@ -141,15 +139,8 @@ def blogentry_detail(request, year=None, month=None, day=None, id=None, slug=Non
 
 
 def impressum(request):
-    
     return render(request, 'weblog/impressum.html')
 
-
-
-# TO FIX - smtp server (souo) rejected die email -
-# Jun 04 12:05:05 suou postfix/smtpd[23084]: connect from mail.htl-villach.at[212.152.179.98]
-# Jun 04 12:05:08 suou postfix/smtpd[23084]: NOQUEUE: reject: RCPT from mail.htl-villach.at[212.152.179.98]: 554 5.1.8 <noreply@serverkiller.net>: Sender address rejected: Domain not found; from=<...t.localdomain>
-# Jun 04 12:05:08 suou postfix/smtpd[23084]: disconnect from mail.htl-villach.at[212.152.179.98]
 
 def contact(request):
     contacted = False
@@ -160,7 +151,7 @@ def contact(request):
             if form.cleaned_data['cc_myself']:
                 email = EmailMessage(form.cleaned_data['subject'], 
                                      form.cleaned_data['text'], 
-                                     'noreply@serverkiller.net',
+                                     'noreply@firehat.w1r3.org',
                                      ['firehat@w1r3.net'],
                                      [form.cleaned_data['email']],
                                      headers = {'Reply-To': form.cleaned_data['email']}

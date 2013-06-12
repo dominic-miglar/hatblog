@@ -200,6 +200,9 @@ EMAIL_HOST_USER = 'username'
 EMAIL_HOST_PASSWORD = 'password'
 EMAIL_USE_TLS = True
 
+EMAIL_FROM = 'my@email.tld'
+EMAIL_RECIPIENT = 'firehat@w1r3.net'
+
 # loads the production values from the settings file
 try:
     from hatblog.local_settings import *
