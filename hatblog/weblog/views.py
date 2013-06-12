@@ -121,8 +121,8 @@ def blogentry_detail(request, year=None, month=None, day=None, id=None, slug=Non
             comment.save()
             commented = True
             jabber_notify(
-                'New comment for blog post <b>%s</b> from <b>%s</b>:\n%s\n%s\n\nE-Mail:%s' % 
-                (comment.blogEntry.subject, comment.name, comment.subject, comment.text, comment.email)
+                'Hello! A new comment was submitted on hatblog. Details below.\n\nFrom: %s\nBelongs to blog entry: %s\nSubject: %s\n\n%s' % 
+                (comment.name, comment.blogEntry.subject, , comment.subject, comment.text, comment.email)
             )
 
     else:
