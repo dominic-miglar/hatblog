@@ -201,7 +201,7 @@ EMAIL_HOST_PASSWORD = 'password'
 EMAIL_USE_TLS = True
 
 EMAIL_FROM = 'my@email.tld'
-EMAIL_RECIPIENT = 'firehat@w1r3.net'
+EMAIL_RECIPIENT = 'another@email.tld'
 
 # loads the production values from the settings file
 try:
