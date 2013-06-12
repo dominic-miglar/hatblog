@@ -120,8 +120,8 @@ def blogentry_detail(request, year=None, month=None, day=None, id=None, slug=Non
             comment.text = form.cleaned_data['text']
             comment.save()
             commented = True
-            notify_message = 'Hello! A new comment was submitted on hatblog. Details below.\n\nFrom: %s\nE-Mail: %s\n\nBelongs to blog entry: %s\nSubject: %s\n\n%s' % 
-                (comment.name, comment.email, comment.blogEntry.subject, comment.subject, comment.text)
+            notify_message = 'Hello! A new comment was submitted on hatblog. Details below.\n\nFrom: {}\nE-Mail: {}\n\nBelongs to blog entry: {}\nSubject: {}\n\n{}'.format(
+                comment.name, comment.email, comment.blogEntry.subject, comment.subject, comment.text) 
             jabber_notify(notify_message)
             send_mail('[hatblog] New comment', notify_message, 'noreply@firehat.w1r3.org', ['firehat@w1r3.net'])
 
