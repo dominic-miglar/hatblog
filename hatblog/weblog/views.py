@@ -151,16 +151,16 @@ def contact(request):
             if form.cleaned_data['cc_myself']:
                 email = EmailMessage(form.cleaned_data['subject'], 
                                      form.cleaned_data['text'], 
-                                     'noreply@firehat.w1r3.org',
-                                     ['firehat@w1r3.net'],
+                                     EMAIL_FROM,
+                                     [EMAIL_RECIPIENT],
                                      [form.cleaned_data['email']],
                                      headers = {'Reply-To': form.cleaned_data['email']}
                                      )
             else:
                 email = EmailMessage(form.cleaned_data['subject'], 
                                      form.cleaned_data['text'], 
-                                     'noreply@serverkiller.net',
-                                     ['firehat@w1r3.net'],
+                                     EMAIL_FROM,
+                                     [EMAIL_RECIPIENT],
                                      headers = {'Reply-To': form.cleaned_data['email']}
                                      )
             email.send()
