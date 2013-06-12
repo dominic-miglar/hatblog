@@ -36,7 +36,7 @@ def home(request):
 
     ctx = {
         'entries': blogentries, 
-        'category_active': category,
+        'category_active': category.name,
         'category_description': category_description,
         }
     return render(request, 'weblog/blog.html', ctx)
