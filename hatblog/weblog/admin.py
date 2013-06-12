@@ -41,18 +41,3 @@ class BlogEntryAdmin(admin.ModelAdmin):
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Comment, CommentAdmin)
 admin.site.register(BlogEntry, BlogEntryAdmin)
-
-
-
-
-
-#class ChoiceInline(admin.StackedInline):
-#    model = Choice
-#    extra = 3
-#
-#class PollAdmin(admin.ModelAdmin):
-#    fieldsets = [
-#        (None,               {'fields': ['question']}),
-#        ('Date information', {'fields': ['pub_date'], 'classes': ['collapse']}),
-#    ]
-#    inlines = [ChoiceInline]

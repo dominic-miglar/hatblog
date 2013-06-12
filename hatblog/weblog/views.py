@@ -15,6 +15,7 @@ from django.core.mail import send_mail, EmailMessage
 
 from hatblog.weblog.models import BlogEntry, Category, Comment
 from hatblog.weblog.forms import CommentForm, ContactForm
+from hatblog.weblog.jabber_notify import jabber_notify
 
 
 def home(request):
@@ -119,6 +120,8 @@ def blogentry_detail(request, year=None, month=None, day=None, id=None, slug=Non
             comment.text = form.cleaned_data['text']
             comment.save()
             commented = True
+            jabber_notify('New comment for blog post %s from %s:\n%s' % (comment.blogEntry.subject, comment.name, comment.text))
+
     else:
         form = CommentForm()
 

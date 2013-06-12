@@ -184,12 +184,15 @@ LOGGING = {
     }
 }
 
+# title for grappelli admin interface
+GRAPPELLI_ADMIN_TITLE = 'hatblog management console'
+
 # JABBER USER ACCOUNT FOR BLOG
 JABBER_ID = 'my@jabberid.tld'
 JABBER_PASSWORD = 'myjabberpassword'
 JABBER_MSG_RECIPIENT = 'jabberidofrecipient@jabber.tld'
 
-GRAPPELLI_ADMIN_TITLE = 'hatblog management console'
+
 
 # loads the production values from the settings file
 try:
