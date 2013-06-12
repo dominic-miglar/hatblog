@@ -192,7 +192,13 @@ JABBER_ID = 'my@jabberid.tld'
 JABBER_PASSWORD = 'myjabberpassword'
 JABBER_MSG_RECIPIENT = 'jabberidofrecipient@jabber.tld'
 
-
+# SMTP Settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'mail.server.tld'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'username'
+EMAIL_HOST_PASSWORD = 'password'
+EMAIL_USE_TLS = True
 
 # loads the production values from the settings file
 try:
