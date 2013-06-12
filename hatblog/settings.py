@@ -185,9 +185,11 @@ LOGGING = {
 }
 
 # JABBER USER ACCOUNT FOR BLOG
-JABBER_ID = 'hatblog@w1r3.net'
-JABBER_PASSWORD = 'bla'
-JABBER_MSG_RECIPIENT = 'firehat@w1r3.net'
+JABBER_ID = 'my@jabberid.tld'
+JABBER_PASSWORD = 'myjabberpassword'
+JABBER_MSG_RECIPIENT = 'jabberidofrecipient@jabber.tld'
+
+GRAPPELLI_ADMIN_TITLE = 'hatblog management console'
 
 # loads the production values from the settings file
 try:
