@@ -13,7 +13,7 @@ class CategoryAdmin(admin.ModelAdmin):
 	]
 
 class CommentAdmin(admin.ModelAdmin):
-	list_display = ('subject', 'blogEntry', 'dateCreated', 'isApproved')
+	list_display = ('subject', 'blogEntry', 'dateCreated', 'name', 'email', 'isApproved')
 	fieldsets = [
 		('General', {'fields': ['blogEntry', 'isApproved']}),
 		('Date information', {'fields': ['dateCreated']}),
@@ -31,7 +31,7 @@ class BlogEntryAdmin(admin.ModelAdmin):
 	]
 	readonly_fields = ('dateCreated', 'dateModified', )
 
-	#class Media:
+   #class Media:
    #		js = [
    #     	'/static/grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js',
    #     	'/static/grappelli/tinymce_setup/tinymce_setup.js',
