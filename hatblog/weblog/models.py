@@ -3,6 +3,7 @@
 
 from django.db import models
 from django.contrib.auth.models import User
+from markdown import markdown
 
 
 class Category(models.Model):
@@ -30,6 +31,10 @@ class BlogEntry(models.Model):
     class Meta:
         verbose_name = 'Entry'
         verbose_name_plural = 'Entries'
+
+    @property
+    def text_to_html(self):
+        return markdown(self.text, extensions=['codehilite(linenums=True)'])
 
     def __unicode__(self):
         return self.subject
