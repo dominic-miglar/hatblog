@@ -122,7 +122,7 @@ def blogentry_detail(request, year=None, month=None, day=None, id=None, slug=Non
             commented = True
             notify_message = u'Hello! A new comment was submitted on hatblog. Details below.\n\nFrom: {}\nE-Mail: {}\n\nBelongs to blog entry: {}\nSubject: {}\n\n{}'.format(
                 comment.name, comment.email, comment.blogEntry.subject, comment.subject, comment.text) 
-            send_email('[hatblog] new comment', notify_message)
+            send_email.delay('[hatblog] new comment', notify_message)
             jabber_notify.delay(notify_message)
 
     else:
@@ -151,9 +151,9 @@ def contact(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             if form.cleaned_data['cc_myself']:
-                send_email(form.cleaned_data['subject'], form.cleaned_data['text'], form.cleaned_data['email'])
+                send_email.delay(form.cleaned_data['subject'], form.cleaned_data['text'], form.cleaned_data['email'])
             else:
-                send_email(form.cleaned_data['subject'], form.cleaned_data['text'])
+                send_email.delay(form.cleaned_data['subject'], form.cleaned_data['text'])
             contacted = True
     else:
         form = ContactForm()
