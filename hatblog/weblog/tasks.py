@@ -18,9 +18,15 @@ def jabber_notify(message):
 	cl.disconnect()
 
 @task()
-def send_email(subject, text, cc=None):
+def send_email(subject, text, cc=None, reply_to=None):
 	if not cc:
-		email = EmailMessage(subject, text, EMAIL_FROM, [EMAIL_RECIPIENT])
+		if reply_to:
+			email = EmailMessage(subject, text, EMAIL_FROM, [EMAIL_RECIPIENT], headers={'Reply-To': cc})
+		else:
+			email = EmailMessage(subject, text, EMAIL_FROM, [EMAIL_RECIPIENT])
 	else:
-		email = EmailMessage(subject, text, EMAIL_FROM, [EMAIL_RECIPIENT], headers={'Reply-To': cc})
+		if reply_to:
+			email = EmailMessage(subject, text, EMAIL_FROM, [EMAIL_RECIPIENT], [cc], headers={'Reply-To': cc})
+		else:
+			email = EmailMessage(subject, text, EMAIL_FROM, [EMAIL_RECIPIENT], [cc])
 	email.send()
