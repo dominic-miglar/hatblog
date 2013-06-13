@@ -362,3 +362,9 @@ input, select, textarea {
 	text-align: left;
 }
 
+/* for syntax hilighting: line numbers padding */
+.linenodiv
+{
+	padding-right: 20px;
+}
+
