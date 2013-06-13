@@ -362,7 +362,10 @@ input, select, textarea {
 	text-align: left;
 }
 
-/* for syntax hilighting: line numbers padding */
+/* 
+    for syntax hilighting: (markdown/pygments)
+    line numbers: padding right
+*/
 .linenodiv
 {
 	padding-right: 20px;
