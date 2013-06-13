@@ -11,14 +11,12 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth import logout
 
 from django.contrib.auth.decorators import login_required
-from django.core.mail import send_mail, EmailMessage
 
 from hatblog.weblog.models import BlogEntry, Category, Comment
 from hatblog.weblog.forms import CommentForm, ContactForm
-#from hatblog.weblog.jabber_notify import jabber_notify
-from hatblog.weblog.tasks import jabber_notify
 
-from hatblog.settings import EMAIL_FROM, EMAIL_RECIPIENT
+from hatblog.weblog.tasks import jabber_notify, send_email
+
 
 
 def home(request):
@@ -124,8 +122,8 @@ def blogentry_detail(request, year=None, month=None, day=None, id=None, slug=Non
             commented = True
             notify_message = u'Hello! A new comment was submitted on hatblog. Details below.\n\nFrom: {}\nE-Mail: {}\n\nBelongs to blog entry: {}\nSubject: {}\n\n{}'.format(
                 comment.name, comment.email, comment.blogEntry.subject, comment.subject, comment.text) 
+            send_email('[hatblog] new comment', notify_message)
             jabber_notify.delay(notify_message)
-            send_mail('[hatblog] New comment', notify_message, EMAIL_FROM, [EMAIL_RECIPIENT])
 
     else:
         form = CommentForm()
@@ -153,21 +151,9 @@ def contact(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             if form.cleaned_data['cc_myself']:
-                email = EmailMessage(form.cleaned_data['subject'], 
-                                     form.cleaned_data['text'], 
-                                     EMAIL_FROM,
-                                     [EMAIL_RECIPIENT],
-                                     [form.cleaned_data['email']],
-                                     headers = {'Reply-To': form.cleaned_data['email']}
-                                     )
+                send_email(form.cleaned_data['subject'], form.cleaned_data['text'], form.cleaned_data['email'])
             else:
-                email = EmailMessage(form.cleaned_data['subject'], 
-                                     form.cleaned_data['text'], 
-                                     EMAIL_FROM,
-                                     [EMAIL_RECIPIENT],
-                                     headers = {'Reply-To': form.cleaned_data['email']}
-                                     )
-            email.send()
+                send_email(form.cleaned_data['subject'], form.cleaned_data['text'])
             contacted = True
     else:
         form = ContactForm()
@@ -190,9 +176,3 @@ def logout_page(request):
     """
     logout(request)
     return redirect('/blog/')
-
-
-
-
-
-
