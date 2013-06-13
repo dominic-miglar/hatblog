@@ -15,8 +15,11 @@ from django.core.mail import send_mail, EmailMessage
 
 from hatblog.weblog.models import BlogEntry, Category, Comment
 from hatblog.weblog.forms import CommentForm, ContactForm
-from hatblog.weblog.jabber_notify import jabber_notify
+#from hatblog.weblog.jabber_notify import jabber_notify
+from hatblog.weblog.tasks import jabber_notify
+
 from hatblog.settings import EMAIL_FROM, EMAIL_RECIPIENT
+
 
 def home(request):
     try:   
@@ -121,7 +124,7 @@ def blogentry_detail(request, year=None, month=None, day=None, id=None, slug=Non
             commented = True
             notify_message = u'Hello! A new comment was submitted on hatblog. Details below.\n\nFrom: {}\nE-Mail: {}\n\nBelongs to blog entry: {}\nSubject: {}\n\n{}'.format(
                 comment.name, comment.email, comment.blogEntry.subject, comment.subject, comment.text) 
-            jabber_notify(notify_message)
+            jabber_notify.delay(notify_message)
             send_mail('[hatblog] New comment', notify_message, EMAIL_FROM, [EMAIL_RECIPIENT])
 
     else:

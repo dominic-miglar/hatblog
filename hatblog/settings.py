@@ -153,7 +153,14 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    '',
+    'djcelery',
+    'kombu.transport.django',
 )
+
+import djcelery
+djcelery.setup_loader()
+BROKER_URL='django://' # use django's orm database tables (that creates kombu) to store the tasks
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
