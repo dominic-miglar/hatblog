@@ -140,8 +140,8 @@ def blogentry_detail(request, year=None, month=None, day=None, id=None, slug=Non
     return render(request, 'weblog/blogentry_detail.html', ctx)
 
 
-def impressum(request):
-    return render(request, 'weblog/impressum.html')
+def imprint(request):
+    return render(request, 'weblog/imprint.html')
 
 
 def contact(request):
