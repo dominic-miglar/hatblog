@@ -120,7 +120,7 @@ def blogentry_detail(request, year=None, month=None, day=None, id=None, slug=Non
             comment.save()
             commented = True
             notify_message = 'Hello! A new comment was submitted on hatblog. Details below.\n\nFrom: {}\nE-Mail: {}\n\nBelongs to blog entry: {}\nSubject: {}\n\n{}'.format(
-                comment.name, comment.email, comment.blogEntry.subject, comment.subject, comment.text) 
+                unicode(comment.name), unicode(comment.email), unicode(comment.blogEntry.subject), unicode(comment.subject), unicode(comment.text)) 
             jabber_notify(notify_message)
             send_mail('[hatblog] New comment', notify_message, EMAIL_FROM, [EMAIL_RECIPIENT])
 
