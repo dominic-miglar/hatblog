@@ -17,11 +17,10 @@ def jabber_notify(message):
 	cl.send(xmpp.protocol.Message(JABBER_MSG_RECIPIENT, message))
 	cl.disconnect()
 
-
+@task()
 def send_email(subject, text, cc=None):
 	if not cc:
 		email = EmailMessage(subject, text, EMAIL_FROM, [EMAIL_RECIPIENT])
 	else:
 		email = EmailMessage(subject, text, EMAIL_FROM, [EMAIL_RECIPIENT], headers={'Reply-To': cc})
 	email.send()
-	
