@@ -351,8 +351,3 @@ input, select, textarea {
 {
 	padding-right: 20px;
 }
-
-/* no underline for a:hover with images */
-.image a:hover {
-	text-decoration: none;
-}
