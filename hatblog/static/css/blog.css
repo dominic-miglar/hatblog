@@ -31,7 +31,6 @@ input, select, textarea {
 #headercontent {
 	margin: 0 auto;
 	width: 1100px;
-	margin-top: 5px;
 }
 
 #headercontent ul {
@@ -46,6 +45,7 @@ input, select, textarea {
 	list-style: none;
 	display: inline;
 	margin-right: 55px;
+	margin-top: 5px;
 }
 
 #headercontent h1 {
