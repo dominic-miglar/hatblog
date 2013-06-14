@@ -90,7 +90,7 @@ input, select, textarea {
 
 #footercontent a:hover
 {
-	text-decoration: underline;
+	color: #CDA869;
 }
 
 #footercontent p {
@@ -213,7 +213,7 @@ input, select, textarea {
 
 .postfooter a:hover
 {
-	color: #CDA869;
+	text-decoration: underline;
 }
 
 
