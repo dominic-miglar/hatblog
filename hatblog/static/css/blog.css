@@ -166,21 +166,17 @@ input, select, textarea {
 }
 
 .postcontent a:hover {
-	text-decoration: none;
+	text-decoration: underline;
 }
 
-.postcontent p a:link {
+.postcontent a:link {
 	color: #ffffff;
 	text-decoration: none;
 }
 
-.postcontent p a:visited {
+.postcontent a:visited {
 	color: #ffffff;
 	font-style: italic;
-}
-
-.postcontent p a:hover {
-	text-decoration: underline;
 }
 
 .postcontent h1 {
@@ -356,3 +352,7 @@ input, select, textarea {
 	padding-right: 20px;
 }
 
+/* no underline for a:hover with images */
+.image a:hover {
+	text-decoration: none;
+}
