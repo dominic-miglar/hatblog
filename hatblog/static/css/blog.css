@@ -23,6 +23,7 @@ input, select, textarea {
 /* DEBUG BEGIN */
 
 #header h1 {
+	padding-top: 2px;
 	font-size: 20pt;
 }
 
