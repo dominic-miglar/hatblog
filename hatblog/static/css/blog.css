@@ -165,16 +165,16 @@ input, select, textarea {
 	font-size: 12pt; 
 }
 
-.postcontent a:hover {
+.postcontent p a:hover {
 	text-decoration: underline;
 }
 
-.postcontent a:link {
+.postcontent p a:link {
 	color: #ffffff;
 	text-decoration: none;
 }
 
-.postcontent a:visited {
+.postcontent p a:visited {
 	color: #ffffff;
 	font-style: italic;
 }
