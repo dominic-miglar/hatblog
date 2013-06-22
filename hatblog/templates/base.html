@@ -1,0 +1,44 @@
+{% load staticfiles %}
+
+<DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8">
+        <title>
+            {% block title %}firehat@blog:~/{% endblock %}
+        </title>
+        <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+        {% block additional_css %}{% endblock %}
+    </head>
+
+    <body>
+        <div id="wrapper">
+            <div id="header">
+                <div id="headercontent">
+                    {% block header %}{% endblock %}
+                </div>
+            </div>
+            <div id="precontainer">
+                <div id="container">
+                    <div id="content">
+                        {% block content %}
+                        {% endblock %}
+                    </div>
+                    <div id="stats">
+                        {% block sidebar %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+            <div id="footer">
+                <div id="footercontent">
+                    {% block footer %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>    
