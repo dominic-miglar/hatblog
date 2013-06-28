@@ -1,0 +1,18 @@
+{% extends 'gallery/base.html' %}
+
+{% block content %}
+<p>
+	If you have any questions regarding the content of this blog please do not hesitate to contact me with the contact form down here.
+</p>
+<div id='contactform'>
+	<section>
+		<form method="post" action=".">{% csrf_token %}
+		    <table>
+		    	{{ form.as_table }}
+		    </table>
+		    <input type="submit" value="Submit comment" />
+		</form>
+	</section>
+</div>
+
+{% endblock %}

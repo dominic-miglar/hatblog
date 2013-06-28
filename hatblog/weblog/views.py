@@ -17,6 +17,22 @@ from hatblog.weblog.forms import CommentForm, ContactForm
 
 from hatblog.weblog.tasks import jabber_notify, send_email
 
+def categories():
+    main_categories = Category.objects.filter(isMainCategory=True)
+    categories = Category.objects.all()
+    ctx = {
+        "main_categories": main_categories,
+        "categories": categories
+    }
+    return ctx
+
+def latest_blog_entries():
+    entries = BlogEntry.objects.all()
+    entries = entries.order_by('-dateCreated')[:5]
+    ctx = {
+        "latest_blog_entries": entries
+    }
+    return ctx
 
 
 def home(request):
@@ -41,6 +57,8 @@ def home(request):
         'category_active': category,
         'category_description': category_description,
         }
+    ctx.update(categories())
+    ctx.update(latest_blog_entries())
     return render(request, 'weblog/blog.html', ctx)
 
 
@@ -97,6 +115,8 @@ def archive(request, year=None, month=None, day=None):
         'entries': blogentries,
         'category_active': category
     }
+    ctx.update(categories()) 
+    ctx.update(latest_blog_entries())
     return render(request, 'weblog/blog.html', ctx)
 
 
@@ -137,11 +157,15 @@ def blogentry_detail(request, year=None, month=None, day=None, id=None, slug=Non
         'entry': entry, 
         'comments': comments,
     }
+    ctx.update(categories())
+    ctx.update(latest_blog_entries())
     return render(request, 'weblog/blogentry_detail.html', ctx)
 
 
 def imprint(request):
-    return render(request, 'weblog/imprint.html')
+    ctx = categories() 
+    ctx.update(latest_blog_entries())
+    return render(request, 'weblog/imprint.html', ctx)
 
 
 def contact(request):
@@ -171,13 +195,9 @@ def contact(request):
         'contacted': contacted, # is true if the user just (valid) filled out the contactform
         'form': form,
     }
-
+    ctx.update(categories())
+    ctx.update(latest_blog_entries())
     return render(request, 'weblog/contact.html', ctx)
-    
-@login_required
-def management(request):
-
-    return render(request, 'weblog/management.html')
 
 def logout_page(request):
     """

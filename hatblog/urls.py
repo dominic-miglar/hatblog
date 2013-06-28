@@ -1,27 +1,20 @@
 from django.conf.urls import patterns, include, url
-from django.views.generic.simple import redirect_to
+from django.views.generic import RedirectView
+from django.conf.urls.static import static
+import hatblog.settings as settings
 
-# Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
 blog_url = 'blog/'
+gallery_url = 'gallery/'
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'hatblog.views.home', name='home'),
-    # url(r'^hatblog/', include('hatblog.foo.urls')),
-
-    #url(r'^/$', redirect_to, {'url': '/blog/'}),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^' + blog_url, include('hatblog.weblog.urls', namespace='hatblog', app_name='weblog')),
-    url(r'^$', redirect_to, {'url': blog_url}),
-)
+    url(r'^' + blog_url, include('hatblog.weblog.urls', namespace='weblog', app_name='weblog')),
+    url(r'^' + gallery_url, include('hatblog.gallery.urls', namespace='gallery', app_name='gallery')),
+    url(r'^$', RedirectView.as_view(url=blog_url)),
+) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 

@@ -10,21 +10,21 @@
 <div class="post">
 	<div class="postheader">
 		<h1>				
-			<a href="{% url hatblog:home %}?category={{ entry.category.name }}">
+			<a href="{% url 'weblog:home' %}?category={{ entry.category.name }}">
 				~/{{ entry.category.name }}
 			</a> $ 
-			<a href="{% url hatblog:blogentry_detail entry.dateCreated|date:"Y" entry.dateCreated|date:"m" entry.dateCreated|date:"d" entry.id entry.slug %}">
+			<a href="{% url 'weblog:blogentry_detail' entry.dateCreated|date:"Y" entry.dateCreated|date:"m" entry.dateCreated|date:"d" entry.id entry.slug %}">
 				{{ entry.subject }}
 			</a>
 		</h1>
 		<p>Written by firehat on 
-			<a href="{% url hatblog:year_archive entry.dateCreated|date:"Y" %}">
+			<a href="{% url 'weblog:year_archive' entry.dateCreated|date:"Y" %}">
 				{{ entry.dateCreated|date:"Y" }}
 			</a>/
-			<a href="{% url hatblog:month_archive entry.dateCreated|date:"Y" entry.dateCreated|date:"m" %}">
+			<a href="{% url 'weblog:month_archive' entry.dateCreated|date:"Y" entry.dateCreated|date:"m" %}">
 				{{ entry.dateCreated|date:"m" }}
 			</a>/
-			<a href="{% url hatblog:day_archive entry.dateCreated|date:"Y" entry.dateCreated|date:"m" entry.dateCreated|date:"d" %}">
+			<a href="{% url 'weblog:day_archive' entry.dateCreated|date:"Y" entry.dateCreated|date:"m" entry.dateCreated|date:"d" %}">
 				{{ entry.dateCreated|date:"d" }}
 			</a>
 			- {{ entry.dateCreated|date:"P" }}

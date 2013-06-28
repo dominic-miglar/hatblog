@@ -1,0 +1,12 @@
+{% extends "gallery/base.html" %}
+
+{% block content %}
+	{{ image.title }}
+
+	<h2>comments</h2>
+	{% for comment in comments %}
+		{{ comment.subject }}<br />{{ comment.text }}
+	{% endfor %}
+
+{% endblock %}
+
