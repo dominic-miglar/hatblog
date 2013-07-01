@@ -1,6 +1,9 @@
-from django.views.generic import TemplateView, FormView, ListView, RedirectView, DetailView
+from django.views.generic import TemplateView, FormView, ListView, RedirectView, DetailView, View
+from django.views.generic.detail import SingleObjectMixin
 from django.core.urlresolvers import reverse
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.contrib.auth import logout
+from django.views.generic.edit import FormMixin
 from hatblog.gallery.forms import CommentForm, ContactForm
 from hatblog.gallery.models import Image, Category, Comment, Tag
 from hatblog.weblog.tasks import jabber_notify, send_email
@@ -25,7 +28,7 @@ class GalleryTemplateView(TemplateView):
         return context
 
 
-class GalleryImageView(DetailView):
+class GalleryDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(GalleryImageView, self).get_context_data(**kwargs)
         context['categories'] = Category.objects.all()
@@ -97,18 +100,50 @@ class ImageListView(GalleryListView):
         return images
 
 
-class ImageView(GalleryImageView):
-    template_name = 'gallery/image.html'
+class ImageView(View):
+    def get(self, request, *args, **kwargs):
+        view = ImageViewWithComments.as_view()
+        return view(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        view = ImageViewAddComment.as_view()
+        return view(request, *args, **kwargs)
+
+
+class ImageViewWithComments(GalleryDetailView):
     model = Image
-    context_object_name = 'image'
-	
+    template_name = 'gallery/image.html'
+
     def get_context_data(self, **kwargs):
-        context = super(ImageView, self).get_context_data(**kwargs)
-        context['comments'] = Comment.objects.filter(image=self.object)
+        context = super(GalleryDetailView, self).get_context_data(**kwargs)
+        ############################context['form'] = CommentForm()
+        # TO FIX :)
         return context
-        # TODO: add comment form and so on....
 
+class ImageViewAddComment(SingleObjectMixin, GalleryFormView):
+    template_name = 'gallery/image.html'
+    form_class = CommentForm
+    model = Image
 
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        return super(ImageViewAddComment, self).post(request, *args, **kwargs)
+
+    def get_success_url(self):
+        url = self.object.get_absolute_url()
+        return url
+
+    def form_valid(self, form):
+        CommentObject = Comment(
+            image = self.object,
+            isApproved = False,
+            name = form.cleaned_data['name'],
+            email = form.cleaned_data['email'],
+            subject = form.cleaned_data['subject'],
+            text = form.cleaned_data['text']
+            )
+        CommentObject.save()
+        HttpResponseRedirect(self.get_success_url())
 
 
 

@@ -1,12 +1,20 @@
 {% extends "gallery/base.html" %}
 
+{% load comments %}
+
 {% block content %}
 	{{ image.title }}
-
+	<img src='{{ image.image.url }}' style="max-width: 800px;" />
 	<h2>comments</h2>
-	{% for comment in comments %}
-		{{ comment.subject }}<br />{{ comment.text }}
-	{% endfor %}
+	{% image_show_comments image %}
+
+	<h3>new comment</h3>
+	<form method="post" action=".">{% csrf_token %}
+		{{ form.name }}
+		{{ form.email }}
+		{{ form.subject }}
+		{{ form.text }}
+    </form>
 
 {% endblock %}
 

@@ -1,5 +1,7 @@
 from django.db import models
 from django.core.files.uploadedfile import SimpleUploadedFile
+from django.template.defaultfilters import slugify
+from django.core.urlresolvers import reverse
 from hatblog.settings import THUMB_MAX_SIZE_HEIGHT, THUMB_MAX_SIZE_WIDTH, MEDIA_ROOT, MEDIA_URL
 from cStringIO import StringIO
 import PIL
@@ -30,12 +32,18 @@ class Tag(models.Model):
 
 class Image(models.Model):
     title = models.CharField(max_length=100)
-    slug = models.SlugField(max_length=100)
+    slug = models.SlugField(max_length=100, unique=True)
     category = models.ForeignKey(Category)
     dateCreated = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='gallery/images/')
     thumbnail = models.ImageField(upload_to='gallery/thumbs/', null=True, blank=True)
     tags = models.ManyToManyField(Tag)
+
+    def get_comments(self):
+        return Comment.objects.filter(image=self)
+
+    def get_absolute_url(self):
+        return reverse('gallery:image', args=(self.id, self.slug))
 
     def create_thumbnail(self):
         if not self.image:
@@ -62,6 +70,7 @@ class Image(models.Model):
 
     def save(self):
         self.create_thumbnail()
+        #self.slug = slugify(self.title)
         super(Image, self).save()
 
     def delete(self):
@@ -73,7 +82,8 @@ class Image(models.Model):
             print "could not delete %s" % self.file.path
 
     def __unicode__(self):
-        return os.path.basename(self.image.path)
+        return self.slug
+        #return os.path.basename(self.image.path)
 
 
 class Comment(models.Model):

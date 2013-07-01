@@ -31,12 +31,6 @@ class BlogEntryAdmin(admin.ModelAdmin):
 	]
 	readonly_fields = ('dateCreated', 'dateModified', )
 
-   #class Media:
-   #		js = [
-   #     	'/static/grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js',
-   #     	'/static/grappelli/tinymce_setup/tinymce_setup.js',
-   # 	]
-
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Comment, CommentAdmin)
