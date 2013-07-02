@@ -3,18 +3,60 @@
 {% load comments %}
 
 {% block content %}
-	{{ image.title }}
+<div id='imageheader'>
+	<p>{{ image.title }}</p>
+</div>
+<div id='image'>
 	<img src='{{ image.image.url }}' style="max-width: 800px;" />
-	<h2>comments</h2>
+</div>
+<div id='imagecontent'>
+	<table class='imageinfo'>
+		<tr>
+			<th>Title</th>
+			<td>{{ image.title }}</td>
+		</tr>
+		<tr>
+			<th>Resolution</th>
+			<td>{{ image.image.width }}x{{ image.image.height }} px</td>
+		</tr>
+		<tr>
+			<th>Type</th>
+			<td>{{ image.image.type }}</td>
+		</tr>
+	</table>
+</div>
+<div id='imagecomments'>
+	<h2>Comments</h2>
 	{% image_show_comments image %}
-
-	<h3>new comment</h3>
+</div>
+<div id='imagenewcomment'>
+	<h3>New comment</h3>
 	<form method="post" action=".">{% csrf_token %}
-		{{ form.name }}
-		{{ form.email }}
-		{{ form.subject }}
-		{{ form.text }}
+		{{ form.non_field_errors }}
+		<table class='commentform'>
+			<tr>
+				<th>{{ form.name.label_tag }}</th>
+				<td>{{ form.name }}</td>
+				<td>{{ form.name.errors }}</td>
+			</tr>
+			<tr>
+				<th>{{ form.email.label_tag }}</th>
+				<td>{{ form.email }}</td>
+				<td>{{ form.email.errors }}</td>
+			</tr>
+			<tr>
+				<th>{{ form.subject.label_tag }}</th>
+				<td>{{ form.subject }}</td>
+				<td>{{ form.subject.errors }}</td>
+			</tr>
+			<tr>
+				<th>{{ form.text.label_tag }}</th>
+				<td>{{ form.text }}</td>
+				<td>{{ form.text.errors }}</td>
+		    </tr>
+	    </table>
+	    <input type="submit" value="Submit comment" />
     </form>
-
+</div>
 {% endblock %}
 

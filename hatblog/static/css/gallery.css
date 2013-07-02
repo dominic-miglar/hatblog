@@ -2,4 +2,59 @@ img {
 	margin: 0;
 	padding: 0;
 	margin-bottom: 15px;
+	display: block;
+}
+
+table tr td ul {
+	margin: 0;
+	padding: 0;
+}
+
+table tr td ul li {
+	margin: 0;
+	padding: 0;
+}
+
+#imageheader {
+	font-size: 12pt;
+	font-weight: normal;
+}
+
+#imagecontent {
+	font-size: 9pt;
+	font-weight: normal;
+}
+
+table.commentform tr {
+}
+
+table.commentform th {
+	padding-right: 20px;
+} 
+
+table.commentform th, table.commentform td {
+	padding-bottom: 10px;
+}
+
+input#id_name, 
+input#id_email,
+input#id_subject {
+	width: 450px;
+}
+
+textarea#id_text {
+	width: 450px;
+}
+
+table.imageinfo th {
+	padding-right: 20px;
+}
+
+table.imageinfo th, 
+table.imageinfo td {
+	text-align: left;
+}
+
+table.imageinfo th {
+	font-weight: normal;
 }

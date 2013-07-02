@@ -30,7 +30,7 @@ class GalleryTemplateView(TemplateView):
 
 class GalleryDetailView(DetailView):
     def get_context_data(self, **kwargs):
-        context = super(GalleryImageView, self).get_context_data(**kwargs)
+        context = super(GalleryDetailView, self).get_context_data(**kwargs)
         context['categories'] = Category.objects.all()
         context['lastimages'] = Image.objects.all().order_by('-dateCreated')[:5]
         context['tags'] = Tag.objects.all()
@@ -115,9 +115,8 @@ class ImageViewWithComments(GalleryDetailView):
     template_name = 'gallery/image.html'
 
     def get_context_data(self, **kwargs):
-        context = super(GalleryDetailView, self).get_context_data(**kwargs)
-        ############################context['form'] = CommentForm()
-        # TO FIX :)
+        context = super(ImageViewWithComments, self).get_context_data(**kwargs)
+        context['form'] = CommentForm()
         return context
 
 class ImageViewAddComment(SingleObjectMixin, GalleryFormView):
@@ -143,7 +142,7 @@ class ImageViewAddComment(SingleObjectMixin, GalleryFormView):
             text = form.cleaned_data['text']
             )
         CommentObject.save()
-        HttpResponseRedirect(self.get_success_url())
+        return HttpResponseRedirect(self.get_success_url())
 
 
 
