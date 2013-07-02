@@ -27,6 +27,10 @@ table tr td ul li {
 	max-width: 780px;
 }
 
+#image a {
+        text-decoration: none;
+}
+
 .imageheader a:link, 
 .imageheader a:visited
 {
