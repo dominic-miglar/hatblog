@@ -1,6 +1,12 @@
 {% for comment in object_list %}
-<p>{{ comment.name }}</p>
-<p>{{ comment.email }}</p>
-<p>{{ comment.subject }}</p>
-<p>{{ comment.text }}</p>
+<div class='imagecomment'>
+	<div class='imageheader'>
+		<p>
+			{{ comment.name }} - <b>{{ comment.subject }}</b> - {{ comment.dateCreated|date:'r' }}
+		</p>
+	</div>
+	<div class='imagecontent'>
+		{{ comment.text|linebreaks }}
+	</div>
+</div>
 {% endfor %}

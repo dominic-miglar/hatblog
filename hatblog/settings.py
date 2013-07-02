@@ -156,6 +156,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'djcelery',
     'kombu.transport.django',
+    'south',
 )
 
 import djcelery

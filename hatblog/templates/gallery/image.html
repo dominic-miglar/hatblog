@@ -3,25 +3,50 @@
 {% load comments %}
 
 {% block content %}
-<div id='imageheader'>
-	<p>{{ image.title }}</p>
+<div class='imageheader'>
+	<h1>
+		<a href="{% url 'gallery:images' %}?category={{ image.category.name }}">
+			~/{{ image.category.name }}
+		</a> $ 
+		<a href='.'>
+			{{ image.title }}
+		</a>
+	</h1>
 </div>
 <div id='image'>
-	<img src='{{ image.image.url }}' style="max-width: 800px;" />
+	<a href='{{ image.image.url }}'>
+		<img class='displayimage' src='{{ image.image.url }}' />
+	</a>
 </div>
-<div id='imagecontent'>
+<div class='imagecontent'>
 	<table class='imageinfo'>
 		<tr>
 			<th>Title</th>
 			<td>{{ image.title }}</td>
 		</tr>
 		<tr>
-			<th>Resolution</th>
-			<td>{{ image.image.width }}x{{ image.image.height }} px</td>
+			<th>Name</th>
+			<td>{{ image.get_filename }}</td>
 		</tr>
 		<tr>
-			<th>Type</th>
-			<td>{{ image.image.type }}</td>
+			<th>URL</th>
+			<td>
+				<a href='{{ image.image.url }}'>
+					{{ image.image.url }}
+				</a>
+			</td>
+		</tr>
+		<tr>
+			<th>Resolution</th>
+			<td>{{ image.image.width }}x{{ image.image.height }}px</td>
+		</tr>
+	</table>
+	<table class='imageinfo'>
+		<tr>
+			<th>Markdown</th>
+			<td>
+				[![{{ image.get_filename }}]({{ image.thumbnail.url }})]({{ image.image.url }})
+			</td>
 		</tr>
 	</table>
 </div>
@@ -36,23 +61,39 @@
 		<table class='commentform'>
 			<tr>
 				<th>{{ form.name.label_tag }}</th>
+				{% if form.name.errors %}
+				<td class='error'>{{ form.name }}</td>
+				{% else %}
 				<td>{{ form.name }}</td>
-				<td>{{ form.name.errors }}</td>
+				{% endif %}
+				<td class='error'>{{ form.name.errors }}</td>
 			</tr>
 			<tr>
 				<th>{{ form.email.label_tag }}</th>
+				{% if form.email.errors %}
+				<td class='error'>{{ form.email }}</td>
+				{% else %}
 				<td>{{ form.email }}</td>
-				<td>{{ form.email.errors }}</td>
+				{% endif %}
+				<td class='error'>{{ form.email.errors }}</td>
 			</tr>
 			<tr>
 				<th>{{ form.subject.label_tag }}</th>
+				{% if form.subject.errors %}
+				<td class='error'>{{ form.subject }}</td>
+				{% else %}
 				<td>{{ form.subject }}</td>
-				<td>{{ form.subject.errors }}</td>
+				{% endif %}
+				<td class='error'>{{ form.subject.errors }}</td>
 			</tr>
 			<tr>
 				<th>{{ form.text.label_tag }}</th>
+				{% if form.text.errors %}
+				<td class='error'>{{ form.text }}</td>
+				{% else %}
 				<td>{{ form.text }}</td>
-				<td>{{ form.text.errors }}</td>
+				{% endif %}
+				<td class='error'>{{ form.text.errors }}</td>
 		    </tr>
 	    </table>
 	    <input type="submit" value="Submit comment" />

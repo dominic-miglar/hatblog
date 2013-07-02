@@ -1,11 +1,27 @@
 {% extends 'gallery/base.html' %}
 
 {% block content %}
+<div class="imageheader">
+	<h1>
+		<a href="{% url 'gallery:imprint' %}">
+			~/imprint
+		</a> $ 		
+	</h1>
+</div>
+<div class="imagecontent">		
+	<h2>Legal information</h2>
+	<p>This website is the personal image-blog of</p>
 	<p>
-		Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   
-
-Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.   
-
-Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse
+		<b>Dominic Miglar</b><br/>
+		Panoramastraße 19<br/>
+		A-8820 Neumarkt in Steiermark
 	</p>
+	<h2>Grundlegende Richtung</h2>
+	<p>
+		This website is my personal image-blog. The purpose of this image-blog is to save pictures which i am using in my personal blog.
+	</p>
+	<p>
+		If you have any questions, feel free to contact me with the <a href="{% url 'gallery:contact' %}">contact form</a> or directly per E-Mail at <a href="mailto:firehat@w1r3.net">firehat_at_w1r3_dot_net</a>.
+	</p>
+</div>
 {% endblock %}

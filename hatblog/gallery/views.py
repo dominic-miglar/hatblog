@@ -78,6 +78,7 @@ class ContactView(GalleryFormView):
                 text=form.cleaned_data['text'],
                 reply_to=form.cleaned_data['email']
                 )
+        return HttpResponseRedirect(reverse('gallery:contact'))
 
 class ImageListView(GalleryListView):
     template_name = 'gallery/gallery.html'
@@ -142,6 +143,9 @@ class ImageViewAddComment(SingleObjectMixin, GalleryFormView):
             text = form.cleaned_data['text']
             )
         CommentObject.save()
+        notify_message = u'Hello! A new comment was submitted in the gallery. Details below.\n\nFrom: {}\nE-Mail: {}\n\nBelongs to blog entry: {}\nSubject: {}\n\n{}'.format(
+                CommentObject.name, CommentObject.email, CommentObject.image.get_filename(), CommentObject.subject, CommentObject.text) 
+        jabber_notify.delay(notify_message)
         return HttpResponseRedirect(self.get_success_url())
 
 

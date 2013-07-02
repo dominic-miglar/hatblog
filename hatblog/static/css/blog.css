@@ -43,18 +43,18 @@
 }
 
 .postcontent {
-	padding: 10px;
+	/* padding: 10px; */
 	padding-left: 0; 
 	font-size: 12pt; 
-}
-
-.postcontent p a:hover {
-	text-decoration: underline;
 }
 
 .postcontent p a:link {
 	color: #ffffff;
 	text-decoration: none;
+}
+
+.postcontent p a:hover {
+	text-decoration: underline;
 }
 
 .postcontent p a:visited {
@@ -168,4 +168,38 @@
 .linenodiv
 {
 	padding-right: 20px;
+}
+
+
+table.commentform th {
+	text-align: left;
+	width: 80px;
+	font-weight: normal;
+} 
+
+table.commentform th, table.commentform td {
+	padding-bottom: 10px;
+}
+
+table.commentform td.error input,
+table.commentform td.error textarea {
+	border: 1px solid red;
+}
+
+table.commentform td.error ul {
+	list-style: none;
+}
+
+table.commentform td.error li {
+	padding-left: 10px;
+}
+
+input#id_name, 
+input#id_email,
+input#id_subject {
+	width: 450px;
+}
+
+textarea#id_text {
+	width: 450px;
 }

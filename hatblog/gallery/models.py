@@ -20,6 +20,7 @@ class Category(models.Model):
     def __unicode__(self):
         return self.name
 
+
 class Tag(models.Model):
     name = models.SlugField(max_length=100, unique=True)
 
@@ -30,6 +31,7 @@ class Tag(models.Model):
     def __unicode__(self):
         return self.name
 
+
 class Image(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100, unique=True)
@@ -37,13 +39,16 @@ class Image(models.Model):
     dateCreated = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='gallery/images/')
     thumbnail = models.ImageField(upload_to='gallery/thumbs/', null=True, blank=True)
-    tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag, null=True)
 
     def get_comments(self):
         return Comment.objects.filter(image=self)
 
     def get_absolute_url(self):
         return reverse('gallery:image', args=(self.id, self.slug))
+
+    def get_filename(self):
+        return os.path.basename(self.image.path)
 
     def create_thumbnail(self):
         if not self.image:
@@ -56,6 +61,9 @@ class Image(models.Model):
         if fileExtension == 'jpg':
             PIL_TYPE = 'jpeg'
             FILE_EXTENSION = 'jpg'
+        elif fileExtension == 'jpe':
+            PIL_TYPE = 'jpeg'
+            FILE_EXTENSION = 'jpe'
         else:
             PIL_TYPE = fileExtension
             FILE_EXTENSION = fileExtension
@@ -83,7 +91,6 @@ class Image(models.Model):
 
     def __unicode__(self):
         return self.slug
-        #return os.path.basename(self.image.path)
 
 
 class Comment(models.Model):

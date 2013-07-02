@@ -6,7 +6,6 @@ from datetime import datetime
 from django.shortcuts import render, redirect
 from django.utils.datastructures import MultiValueDictKeyError
 from django.core.exceptions import ObjectDoesNotExist
-from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.contrib.auth import logout
 
@@ -42,20 +41,15 @@ def home(request):
         category = None
         
     if category:
-            category = get_object_or_404(Category, name=category)
-            blogentries = BlogEntry.objects.filter(category__name=category.name)
-            category_description = Category.objects.filter(name=category)[0].description
-            category = category.name # vorbereitung fuer category_active im ctx
+            blogentries = BlogEntry.objects.filter(category__name=category)
     else:
         blogentries = BlogEntry.objects.filter()
-        category_description = None
 
     blogentries = blogentries.order_by('-dateCreated')
 
     ctx = {
         'entries': blogentries, 
         'category_active': category,
-        'category_description': category_description,
         }
     ctx.update(categories())
     ctx.update(latest_blog_entries())
@@ -72,10 +66,8 @@ def archive(request, year=None, month=None, day=None):
 
     try:
         category = request.GET['category']
-        category_description = Category.objects.filter(name=category)[0].description
     except MultiValueDictKeyError:
         category = None
-        category_description = None
 
     if day:
         if category:
@@ -111,7 +103,6 @@ def archive(request, year=None, month=None, day=None):
     blogentries = blogentries.order_by('-dateCreated')
     
     ctx = {
-        'category_description': category_description,
         'entries': blogentries,
         'category_active': category
     }
