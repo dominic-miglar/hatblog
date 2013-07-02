@@ -1,0 +1,103 @@
+{% extends "gallery/base.html" %}
+
+{% load comments %}
+
+{% block content %}
+<div class='imageheader'>
+	<h1>
+		<a href="{% url 'gallery:images' %}?category={{ image.category.name }}">
+			~/{{ image.category.name }}
+		</a> $ 
+		<a href='.'>
+			{{ image.title }}
+		</a>
+	</h1>
+</div>
+<div id='image'>
+	<a href='{{ image.image.url }}'>
+		<img class='displayimage' src='{{ image.image.url }}' />
+	</a>
+</div>
+<div class='imagecontent'>
+	<table class='imageinfo'>
+		<tr>
+			<th>Title</th>
+			<td>{{ image.title }}</td>
+		</tr>
+		<tr>
+			<th>Name</th>
+			<td>{{ image.get_filename }}</td>
+		</tr>
+		<tr>
+			<th>URL</th>
+			<td>
+				<a href='{{ image.image.url }}'>
+					{{ image.image.url }}
+				</a>
+			</td>
+		</tr>
+		<tr>
+			<th>Resolution</th>
+			<td>{{ image.image.width }}x{{ image.image.height }}px</td>
+		</tr>
+	</table>
+	<table class='imageinfo'>
+		<tr>
+			<th>Markdown</th>
+			<td>
+				[![{{ image.get_filename }}]({{ image.thumbnail.url }})]({{ image.image.url }})
+			</td>
+		</tr>
+	</table>
+</div>
+<div id='imagecomments'>
+	<h2>Comments</h2>
+	{% image_show_comments image %}
+</div>
+<div id='imagenewcomment'>
+	<h3>New comment</h3>
+	<form method="post" action=".">{% csrf_token %}
+		{{ form.non_field_errors }}
+		<table class='commentform'>
+			<tr>
+				<th>{{ form.name.label_tag }}</th>
+				{% if form.name.errors %}
+				<td class='error'>{{ form.name }}</td>
+				{% else %}
+				<td>{{ form.name }}</td>
+				{% endif %}
+				<td class='error'>{{ form.name.errors }}</td>
+			</tr>
+			<tr>
+				<th>{{ form.email.label_tag }}</th>
+				{% if form.email.errors %}
+				<td class='error'>{{ form.email }}</td>
+				{% else %}
+				<td>{{ form.email }}</td>
+				{% endif %}
+				<td class='error'>{{ form.email.errors }}</td>
+			</tr>
+			<tr>
+				<th>{{ form.subject.label_tag }}</th>
+				{% if form.subject.errors %}
+				<td class='error'>{{ form.subject }}</td>
+				{% else %}
+				<td>{{ form.subject }}</td>
+				{% endif %}
+				<td class='error'>{{ form.subject.errors }}</td>
+			</tr>
+			<tr>
+				<th>{{ form.text.label_tag }}</th>
+				{% if form.text.errors %}
+				<td class='error'>{{ form.text }}</td>
+				{% else %}
+				<td>{{ form.text }}</td>
+				{% endif %}
+				<td class='error'>{{ form.text.errors }}</td>
+		    </tr>
+	    </table>
+	    <input type="submit" value="Submit comment" />
+    </form>
+</div>
+{% endblock %}
+

@@ -1,0 +1,27 @@
+{% extends 'gallery/base.html' %}
+
+{% block content %}
+<div class="imageheader">
+	<h1>
+		<a href="{% url 'gallery:imprint' %}">
+			~/imprint
+		</a> $ 		
+	</h1>
+</div>
+<div class="imagecontent">		
+	<h2>Legal information</h2>
+	<p>This website is the personal image-blog of</p>
+	<p>
+		<b>Dominic Miglar</b><br/>
+		Panoramastraße 19<br/>
+		A-8820 Neumarkt in Steiermark
+	</p>
+	<h2>Grundlegende Richtung</h2>
+	<p>
+		This website is my personal image-blog. The purpose of this image-blog is to save pictures which i am using in my personal blog.
+	</p>
+	<p>
+		If you have any questions, feel free to contact me with the <a href="{% url 'gallery:contact' %}">contact form</a> or directly per E-Mail at <a href="mailto:firehat@w1r3.net">firehat_at_w1r3_dot_net</a>.
+	</p>
+</div>
+{% endblock %}

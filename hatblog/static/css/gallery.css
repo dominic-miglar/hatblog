@@ -1,0 +1,189 @@
+img {
+	margin: 0;
+	padding: 0;
+	margin-bottom: 15px;
+}
+
+table tr td ul {
+	margin: 0;
+	padding: 0;
+}
+
+table tr td ul li {
+	margin: 0;
+	padding: 0;
+}
+
+.imageheader {
+	color: #ffffff;
+	padding-bottom: 5px;
+}
+
+#image img {
+	display: block;
+}
+
+#image img.displayimage {
+	max-width: 780px;
+}
+
+.imageheader a:link, 
+.imageheader a:visited
+{
+	text-decoration: none;
+	color: #CDA869;
+}
+
+.imageheader a:hover
+{
+	text-decoration: underline;
+}
+
+.imageheader p a:link, 
+.imageheader p a:visited
+{
+	text-decoration: none;
+	color: #ffffff;
+}
+
+.imageheader p a:hover
+{
+	text-decoration: underline;
+}
+
+.imageheader h1 {
+	margin: 0;
+	margin-bottom: 20px;
+	font-size: 18pt; 
+	color: #CDA869;
+}
+
+.imageheader p {
+	font-size: 10pt;
+	margin: 0;
+	text-align: right; 
+}
+
+.imagecontent {
+	padding-left: 0; 
+	font-size: 12pt; 
+}
+
+.imagecontent a:link {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.imagecontent a:hover {
+	text-decoration: underline;
+}
+
+.imagecontent a:visited {
+	color: #ffffff;
+	font-style: italic;
+}
+
+.imagecontent h1 {
+	font-size: 16pt;
+}
+
+.imagecontent h2 {
+	font-size: 14pt;
+}
+
+.imagecontent h3 {
+	font-size: 12pt;
+}
+
+.imagecontent h4 {
+	font-size: 11pt;
+}
+
+.imagecontent pre {
+	font-size: 10pt;
+}
+
+.imagefooter a:link, 
+.imagefooter a:visited
+{
+	text-decoration: none;
+	color: #ffffff;
+}
+
+.imagefooter a:hover
+{
+	text-decoration: underline;
+}
+
+.imagefooter p {
+	padding-top: 5px;
+	font-size: 10pt;
+	margin: 0;
+	text-align: right; 
+}
+
+#imagecomments h2 {
+	margin-top: 50px;
+	color: #CDA869;
+	font-size: 16pt;
+}
+
+#imagenewcomment {
+	margin-top: 50px;
+}
+
+#imagenewcomment h3 {
+	color: #CDA869; 
+	font-size: 14pt;
+}
+
+table.commentform th {
+	text-align: left;
+	width: 80px;
+	font-weight: normal;
+} 
+
+table.commentform th, table.commentform td {
+	padding-bottom: 10px;
+}
+
+table.commentform td.error input,
+table.commentform td.error textarea {
+	border: 1px solid red;
+}
+
+table.commentform td.error ul {
+	list-style: none;
+}
+
+table.commentform td.error li {
+	padding-left: 10px;
+}
+
+input#id_name, 
+input#id_email,
+input#id_subject {
+	width: 450px;
+}
+
+textarea#id_text {
+	width: 450px;
+}
+
+table.imageinfo th {
+	width: 125px;
+	font-weight: normal;
+}
+
+table.imageinfo th, 
+table.imageinfo td {
+	text-align: left;
+}
+
+table.imageinfo {
+	margin-top: 25px;
+}
+
+.imagecomment {
+	margin-bottom: 30px;
+}

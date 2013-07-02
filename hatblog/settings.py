@@ -113,8 +113,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.static",
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
-    "hatblog.weblog.context_processors.categories",
-    "hatblog.weblog.context_processors.latest_blog_entries",
+    #"hatblog.weblog.context_processors.categories",
+    #"hatblog.weblog.context_processors.latest_blog_entries",
 )
 
 MIDDLEWARE_CLASSES = (
@@ -148,6 +148,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'hatblog',
     'hatblog.weblog',
+    'hatblog.gallery',
     # Uncomment the next line to enable the admin:
     'grappelli',
     'django.contrib.admin',
@@ -155,6 +156,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'djcelery',
     'kombu.transport.django',
+    'south',
 )
 
 import djcelery
@@ -208,6 +210,10 @@ EMAIL_USE_TLS = True
 
 EMAIL_FROM = 'my@email.tld'
 EMAIL_RECIPIENT = 'another@email.tld'
+
+# Gallery Settings
+THUMB_MAX_SIZE_HEIGHT = 250
+THUMB_MAX_SIZE_WIDTH = 250
 
 # loads the production values from the settings file
 try:

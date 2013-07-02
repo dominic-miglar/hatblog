@@ -13,14 +13,14 @@
     <ul>
         <li>
             <h1>
-                <a href="{% url hatblog:home %}">
+                <a href="{% url 'weblog:home' %}">
                                         ~/
                 </a>
             </h1>
         </li>
         {% for category in main_categories %}
             <li>
-                <a href="{% url hatblog:home %}?category={{ category.name }}">
+                <a href="{% url 'weblog:home' %}?category={{ category.name }}">
                 {% if category.name == category_active %}
                     <h1 id="active">~/{{ category.name }}</h1>
                 {% else %}
@@ -40,7 +40,7 @@
             <p>
                 Welcome, {{ user.username }}.<br/>
                 Go to the <a href="/admin/weblog">management console</a>
-                or <a href="{% url hatblog:logout %}">logout</a>.
+                or <a href="{% url 'weblog:logout' %}">logout</a>.
             </p>                                    
         </div>
     {% endif %}
@@ -53,7 +53,7 @@
                          in ~/{{ entry.category.name }}
                     </h3>
                     <p>
-                        <a href="{% url hatblog:blogentry_detail entry.dateCreated|date:"Y" entry.dateCreated|date:"m" entry.dateCreated|date:"d" entry.id entry.slug %}">
+                        <a href="{% url 'weblog:blogentry_detail' entry.dateCreated|date:"Y" entry.dateCreated|date:"m" entry.dateCreated|date:"d" entry.id entry.slug %}">
                             <b>$ {{ entry.subject }}</b>
                         </a>
                     </p>
@@ -66,7 +66,7 @@
                 <ul>
                     {% for category in categories %}
                         <li>
-                            <a href="{% url hatblog:home %}?category={{ category.name }}">
+                            <a href="{% url 'weblog:home' %}?category={{ category.name }}">
                                 ~/{{ category.name }}
                             </a>
                         </li>
@@ -105,10 +105,10 @@
 
 {% block footer %}
     <p>
-        <a href='{% url hatblog:imprint %}'>
+        <a href='{% url 'weblog:imprint' %}'>
             Imprint
         </a> | 
-        <a href='{% url hatblog:contact %}'>
+        <a href='{% url 'weblog:contact' %}'>
             Contact
         </a> | 
         <a href='https://www.djangoproject.com/'>

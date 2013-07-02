@@ -1,0 +1,72 @@
+{% extends 'gallery/base.html' %}
+
+{% block content %}
+
+<div class="imageheader">
+	<h1>
+		<a href="{% url 'gallery:contact' %}">
+			~/contact
+		</a> $ 		
+	</h1>
+</div>
+<div class="imagecontent">
+	<p>
+		If you have any questions regarding the content of this blog please do not hesitate to contact me with the contact form down here.
+	</p>
+	<div id='imagenewcomment'>
+		<section>
+			<form method="post" action=".">{% csrf_token %}
+			    <table class='commentform'>
+					<tr>
+						<th>{{ form.name.label_tag }}</th>
+						{% if form.name.errors %}
+						<td class='error'>{{ form.name }}</td>
+						{% else %}
+						<td>{{ form.name }}</td>
+						{% endif %}
+						<td class='error'>{{ form.name.errors }}</td>
+					</tr>
+					<tr>
+						<th>{{ form.email.label_tag }}</th>
+						{% if form.email.errors %}
+						<td class='error'>{{ form.email }}</td>
+						{% else %}
+						<td>{{ form.email }}</td>
+						{% endif %}
+						<td class='error'>{{ form.email.errors }}</td>
+					</tr>
+					<tr>
+						<th>{{ form.subject.label_tag }}</th>
+						{% if form.subject.errors %}
+						<td class='error'>{{ form.subject }}</td>
+						{% else %}
+						<td>{{ form.subject }}</td>
+						{% endif %}
+						<td class='error'>{{ form.subject.errors }}</td>
+					</tr>
+					<tr>
+						<th>{{ form.text.label_tag }}</th>
+						{% if form.text.errors %}
+						<td class='error'>{{ form.text }}</td>
+						{% else %}
+						<td>{{ form.text }}</td>
+						{% endif %}
+						<td class='error'>{{ form.text.errors }}</td>
+				    </tr>
+				    <tr>
+						<th>{{ form.cc_myself.label_tag }}</th>
+						{% if form.cc_myself.errors %}
+						<td class='error'>{{ form.cc_myself }}</td>
+						{% else %}
+						<td>{{ form.cc_myself }}</td>
+						{% endif %}
+						<td class='error'>{{ form.cc_myself.errors }}</td>
+				    </tr>
+			    </table>
+			    <input type="submit" value="Submit comment" />
+			</form>
+		</section>
+	</div>
+</div>
+
+{% endblock %}

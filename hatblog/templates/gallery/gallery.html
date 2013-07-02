@@ -1,0 +1,9 @@
+{% extends "gallery/base.html" %}
+
+{% block content %}
+	{% for image in images %}
+		<a href="{% url 'gallery:image' image.pk image.slug %}">
+			<img src='{{ MEDIA_URL }}{{ image.thumbnail.name }}' />
+		</a>
+	{% endfor %}
+{% endblock %}
