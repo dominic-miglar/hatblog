@@ -146,6 +146,7 @@ class ImageViewAddComment(SingleObjectMixin, GalleryFormView):
         notify_message = u'Hello! A new comment was submitted in the gallery. Details below.\n\nFrom: {}\nE-Mail: {}\n\nBelongs to blog entry: {}\nSubject: {}\n\n{}'.format(
                 CommentObject.name, CommentObject.email, CommentObject.image.get_filename(), CommentObject.subject, CommentObject.text) 
         jabber_notify.delay(notify_message)
+        send_email.delay(subject='[hatblog] new comment', text=notify_message)
         return HttpResponseRedirect(self.get_success_url())
 
 
