@@ -20,10 +20,10 @@ class ImageAdmin(admin.ModelAdmin):
 		('Tags', {'fields': ['tags']}),
 	]
 	readonly_fields = ('dateCreated',)
+	filter_horizontal = ('tags',)
 
 
 admin.site.register(Image, ImageAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Comment)
 admin.site.register(Tag)
-
