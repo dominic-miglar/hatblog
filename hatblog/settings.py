@@ -212,8 +212,8 @@ EMAIL_FROM = 'my@email.tld'
 EMAIL_RECIPIENT = 'another@email.tld'
 
 # Gallery Settings
-THUMB_MAX_SIZE_HEIGHT = 250
 THUMB_MAX_SIZE_WIDTH = 250
+THUMB_MAX_SIZE_HEIGHT = 200
 
 # loads the production values from the settings file
 try:

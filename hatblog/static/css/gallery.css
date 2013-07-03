@@ -14,9 +14,8 @@ table tr td ul li {
 	padding: 0;
 }
 
-.imageheader {
-	color: #ffffff;
-	padding-bottom: 5px;
+#images a {
+	text-decoration: none;
 }
 
 #image img {
@@ -29,6 +28,11 @@ table tr td ul li {
 
 #image a {
         text-decoration: none;
+}
+
+.imageheader {
+	color: #ffffff;
+	padding-bottom: 5px;
 }
 
 .imageheader a:link, 
