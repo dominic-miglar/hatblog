@@ -14,7 +14,8 @@ class CategoryAdmin(admin.ModelAdmin):
 class ImageAdmin(admin.ModelAdmin):
 	list_display = ('title', 'category', 'dateCreated')
 	fieldsets = [
-		('General', {'fields': ['title', 'description', 'slug', 'category']}),
+		('General', {'fields': ['title', 'slug', 'category']}),
+		('Additional information', {'fields': ['description']}),
 		('Time information', {'fields': ['dateCreated']}),
 		('Image', {'fields': ['image']}),
 		('Tags', {'fields': ['tags']}),
