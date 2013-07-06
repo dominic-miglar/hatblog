@@ -14,7 +14,7 @@ class CategoryAdmin(admin.ModelAdmin):
 class ImageAdmin(admin.ModelAdmin):
 	list_display = ('title', 'category', 'dateCreated')
 	fieldsets = [
-		('General', {'fields': ['title', 'slug', 'category']}),
+		('General', {'fields': ['title', 'description', 'slug', 'category']}),
 		('Time information', {'fields': ['dateCreated']}),
 		('Image', {'fields': ['image']}),
 		('Tags', {'fields': ['tags']}),
@@ -25,3 +25,4 @@ admin.site.register(Image, ImageAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Comment)
 admin.site.register(Tag)
+

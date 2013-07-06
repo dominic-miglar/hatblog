@@ -34,6 +34,7 @@ class Tag(models.Model):
 
 class Image(models.Model):
     title = models.CharField(max_length=100)
+    description = models.TextField('Description', blank=True)
     slug = models.SlugField(max_length=100, unique=True)
     category = models.ForeignKey(Category)
     dateCreated = models.DateTimeField(auto_now_add=True)
