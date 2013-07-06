@@ -26,7 +26,11 @@
 		</tr>
 		<tr>
 			<th>Description</th>
+			{% if image.description %}
 			<td>{{ image.description }}</td>
+			{% else %}
+			<td>None</td>
+			{% endif %}
 		</tr>
 		<tr>
 			<th>Name</th>
