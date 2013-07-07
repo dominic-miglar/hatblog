@@ -176,6 +176,9 @@ table.codehilitetable {
 	width: 100%;
 }
 
+table.codehilitetable tbody tr td.linenos {
+	width: 20px;
+}
 
 table.commentform th {
 	text-align: left;
