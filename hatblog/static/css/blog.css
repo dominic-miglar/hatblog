@@ -178,6 +178,7 @@ table.codehilitetable {
 
 table.codehilitetable tbody tr td.linenos {
 	width: 20px;
+	padding-left: 10px;
 }
 
 table.commentform th {
