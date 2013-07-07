@@ -179,11 +179,11 @@ table.codehilitetable tbody tr td.linenos {
 	background-color: #272822;
 	width: 20px;
 	padding-left: 10px;
+	border-spacing: 30px;
 }
 
 table.codehilitetable tbody tr td.code {
 	background-color: #272822;
-	margin-left: 20px;
 }
 
 table.commentform th {
