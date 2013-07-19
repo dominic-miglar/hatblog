@@ -149,11 +149,8 @@ INSTALLED_APPS = (
     'hatblog',
     'hatblog.weblog',
     'hatblog.gallery',
-    # Uncomment the next line to enable the admin:
     'grappelli',
     'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
     'djcelery',
     'kombu.transport.django',
     'south',
