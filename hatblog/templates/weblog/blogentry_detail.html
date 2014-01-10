@@ -37,7 +37,7 @@
 		<p>
 			Last edited on {{ entry.dateModified|date:"Y" }} / {{ entry.dateModified|date:"m" }} / {{ entry.dateModified|date:"d" }} - {{ entry.dateModified|date:"P" }}
 		</p>
-		<div class='comments'>
+		<a name="comments"><div class='comments'></a>
 			{% if comments %}
 			<h2>Comments</h2>
 			{% for comment in comments %}
