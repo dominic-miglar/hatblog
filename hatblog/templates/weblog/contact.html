@@ -43,8 +43,13 @@
 								{% else %}
 								<td>{{ form.email }}</td>
 								{% endif %}
+							</tr>
+							{% if form.name.errors %}
+							<tr>
+								<th></th>
 								<td class='error'>{{ form.email.errors }}</td>
 							</tr>
+							{% endif %}
 							<tr>
 								<th>{{ form.subject.label_tag }}</th>
 								{% if form.subject.errors %}
@@ -52,8 +57,13 @@
 								{% else %}
 								<td>{{ form.subject }}</td>
 								{% endif %}
+							</tr>
+							{% if form.subject.errors %}
+							<tr>
+								<th></th>
 								<td class='error'>{{ form.subject.errors }}</td>
 							</tr>
+							{% endif %}
 							<tr>
 								<th>{{ form.text.label_tag }}</th>
 								{% if form.text.errors %}
@@ -61,8 +71,13 @@
 								{% else %}
 								<td>{{ form.text }}</td>
 								{% endif %}
-								<td class='error'>{{ form.text.errors }}</td>
 						    </tr>
+						    {% if form.text.errors %}
+							<tr>
+								<th></th>
+								<td class='error'>{{ form.text.errors }}</td>
+							</tr>
+							{% endif %}
 						    <tr>
 								<th>{{ form.cc_myself.label_tag }}</th>
 								{% if form.cc_myself.errors %}
@@ -70,8 +85,13 @@
 								{% else %}
 								<td>{{ form.cc_myself }}</td>
 								{% endif %}
-								<td class='error'>{{ form.cc_myself.errors }}</td>
 						    </tr>
+						    {% if form.cc_myself.errors %}
+							<tr>
+								<th></th>
+								<td class='error'>{{ form.cc_myself.errors }}</td>
+							</tr>
+							{% endif %}
 					    </table>
 		    			<input type="submit" value="Submit comment" />
 		    		</form>
