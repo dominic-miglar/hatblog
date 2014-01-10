@@ -1,26 +1,5 @@
 {% extends "weblog/base.html" %}
 
-{% block additional_scripts %}
-<script type="text/javascript">
-    function getPosition(element){
-        var e = document.getElementById(element);
-        var left = 0;
-        var top = 0;
-
-        do{
-            left += e.offsetLeft;
-            top += e.offsetTop;
-        }while(e = e.offsetParent);
-
-        return [left, top];
-    }
-
-    function jumpTo(id){    
-        window.scrollTo(getPosition(id));
-    }
-</script>
-{% endblock %}
-
 {% block content %}
 {% if commented %}
 <div class='information'>
@@ -31,8 +10,8 @@
 {% for field in form  %}
 	{% if field.errors %}
 		<script type="text/javascript">
-			/*jumpTo('comments');*/
 			window.location.hash = 'comments';
+			window.location.reload();
 		</script>
 	{% endif %}
 {% endfor %}
