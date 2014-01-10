@@ -29,8 +29,12 @@
 								{% else %}
 								<td>{{ form.name }}</td>
 								{% endif %}
+							</tr>
+							{% if form.name.errors %}
+							<tr>
 								<td class='error'>{{ form.name.errors }}</td>
 							</tr>
+							{% endif %}
 							<tr>
 								<th>{{ form.email.label_tag }}</th>
 								{% if form.email.errors %}
