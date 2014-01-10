@@ -189,7 +189,7 @@ table.codehilitetable tbody tr td.code {
 	background-color: #272822;
 }
 
-table.commentform th {
+table.commentform th label {
 	text-align: left;
 	width: 200px;
 	font-weight: normal;
