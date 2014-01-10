@@ -37,7 +37,7 @@
 	color: #CDA869;
 }
 .postheader p {
-	font-size: 8pt;
+	font-size: 10pt;
 	margin: 0;
 	text-align: right; 
 }
@@ -75,11 +75,11 @@
 }
 
 .postcontent h4 {
-	font-size: 9pt;
+	font-size: 10pt;
 }
 
 .postcontent pre {
-	font-size: 8pt;
+	font-size: 10pt;
 }
 
 .postcontent img {
@@ -105,7 +105,7 @@
 
 .postfooter p {
 	padding-top: 5px;
-	font-size: 8pt;
+	font-size: 10pt;
 	margin: 0;
 	text-align: right; 
 }
