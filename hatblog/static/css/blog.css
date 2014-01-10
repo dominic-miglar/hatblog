@@ -184,8 +184,12 @@ table.codehilitetable tbody tr td.code {
 	background-color: #272822;
 }
 
-table.commentform th label {
+table.commentform th {
+	min-width: 100px;
 	text-align: left;
+}
+
+table.commentform th label {
 	font-weight: normal;
 } 
 
