@@ -14,6 +14,7 @@
 {% endif %}
 {% for field in form  %}
 	{% if field.errors %}
+		<script type="text/javascript" src="{% static 'js/jquery-2.0.3.min.js' %}"></script>
 		<script type="text/javascript">
 			$(document).scrollTop( $("#comments").offset().top);  
 		</script>
