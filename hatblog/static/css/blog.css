@@ -67,7 +67,7 @@ label {
 }
 
 .postcontent h1 {
-	font-size: 14pt;
+	font-size: 14;
 }
 
 .postcontent h2 {
@@ -204,6 +204,11 @@ table.commentform td.error textarea {
 	border: 1px solid red;
 }
 
+table.commentform td.error {
+	font-size: 11pt;
+}
+
+
 table.commentform td.error ul {
 	list-style: none;
 }
@@ -211,6 +216,7 @@ table.commentform td.error ul {
 table.commentform td.error li {
 	padding-left: 10px;
 }
+
 
 input#id_name, 
 input#id_email,
