@@ -65,6 +65,12 @@
 							<td>{{ form.name }}</td>
 							{% endif %}
 						</tr>
+						{% if form.name.errors %}
+						<tr>
+							<th></th>
+							<td class='error'>{{ form.name.errors }}</td>
+						</tr>
+						{% endif %}
 						<tr>
 							<th>{{ form.email.label_tag }}</th>
 							{% if form.email.errors %}
@@ -73,7 +79,7 @@
 							<td>{{ form.email }}</td>
 							{% endif %}
 						</tr>
-						{% if form.name.errors %}
+						{% if form.email.errors %}
 						<tr>
 							<th></th>
 							<td class='error'>{{ form.email.errors }}</td>
@@ -87,6 +93,12 @@
 							<td>{{ form.subject }}</td>
 							{% endif %}
 						</tr>
+						{% if form.subject.errors %}
+						<tr>
+							<th></th>
+							<td class='error'>{{ form.subject.errors }}</td>
+						</tr>
+						{% endif %}
 						<tr>
 							<th>{{ form.text.label_tag }}</th>
 							{% if form.text.errors %}
@@ -95,6 +107,12 @@
 							<td>{{ form.text }}</td>
 							{% endif %}
 					    </tr>
+					    {% if form.text.errors %}
+						<tr>
+							<th></th>
+							<td class='error'>{{ form.text.errors }}</td>
+						</tr>
+						{% endif %}
 					</table>
 					<input type="submit" value="Submit comment" />
 				</form>
