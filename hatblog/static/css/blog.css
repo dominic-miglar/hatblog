@@ -216,9 +216,9 @@ table.commentform td.error li {
 input#id_name, 
 input#id_email,
 input#id_subject {
-	width: 678px;
+	width: 676px;
 }
 
 textarea#id_text {
-	width: 678px;
+	width: 676px;
 }
