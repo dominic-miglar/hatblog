@@ -208,6 +208,10 @@ table.commentform td.error li {
 	padding-left: 10px;
 }
 
+table.commmentform label {
+	font-size: 10pt;
+}
+
 input#id_name, 
 input#id_email,
 input#id_subject {
