@@ -196,7 +196,7 @@ table.commentform th {
 } 
 
 table.commentform th, table.commentform td {
-	padding-bottom: 10px;
+	padding-bottom: 0px; /* test */
 }
 
 table.commentform td.error input,
