@@ -16,7 +16,9 @@
 	{% if field.errors %}
 		<script type="text/javascript" src="{% static 'js/jquery-2.0.3.min.js' %}"></script>
 		<script type="text/javascript">
-			$(document).scrollTop( $("#comments").offset().top);  
+			/*$(document).scrollTop( $("#comments").offset().top); */
+			var catTopPosition = jQuery('#comments').offset().top;
+			jQuery('html, body').animate({scrollTop:catTopPosition}, 'slow');
 		</script>
 	{% endif %}
 {% endfor %}
