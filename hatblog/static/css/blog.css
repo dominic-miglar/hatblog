@@ -1,3 +1,7 @@
+label {
+	font-size: 10pt;
+}
+
 .post {
 	margin-bottom: 50px;
 }
@@ -206,10 +210,6 @@ table.commentform td.error ul {
 
 table.commentform td.error li {
 	padding-left: 10px;
-}
-
-table.commmentform th label {
-	font-size: 10pt;
 }
 
 input#id_name, 
