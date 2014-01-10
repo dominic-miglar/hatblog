@@ -1,6 +1,5 @@
 label {
 	font-size: 11pt;
-	width: 200px;
 }
 
 .post {
@@ -13,26 +12,22 @@ label {
 }
 
 .postheader a:link, 
-.postheader a:visited
-{
+.postheader a:visited {
 	text-decoration: none;
 	color: #CDA869;
 }
 
-.postheader a:hover
-{
+.postheader a:hover {
 	text-decoration: underline;
 }
 
 .postheader p a:link, 
-.postheader p a:visited
-{
+.postheader p a:visited {
 	text-decoration: none;
 	color: #ffffff;
 }
 
-.postheader p a:hover
-{
+.postheader p a:hover {
 	text-decoration: underline;
 }
 
@@ -162,7 +157,7 @@ label {
 }
 
 #contactform table th {
-	width: 100px;
+	min-width: 300px;
 	text-align: left;
 }
 
@@ -170,8 +165,7 @@ label {
     for syntax hilighting: (markdown/pygments)
     line numbers: padding right
 */
-.linenodiv
-{
+.linenodiv {
 	padding-right: 20px;
 }
 
