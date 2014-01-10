@@ -133,7 +133,7 @@ table tr td ul li {
 #imagecomments h2 {
 	margin-top: 50px;
 	color: #CDA869;
-	font-size: 16pt;
+	font-size: 14pt;
 }
 
 #imagenewcomment {
@@ -142,7 +142,7 @@ table tr td ul li {
 
 #imagenewcomment h3 {
 	color: #CDA869; 
-	font-size: 14pt;
+	font-size: 12pt;
 }
 
 table.commentform th {
