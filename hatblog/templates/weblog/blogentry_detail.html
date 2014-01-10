@@ -19,13 +19,14 @@
         window.scrollTo(getPosition(id));
     }
 </script>
-{% scripts %}
+{% endblock %}
 
 {% block content %}
 {% if commented %}
 <div class='information'>
 	<p>Thank you. Your comment was submitted.</p>
 </div>
+
 {% endif %}
 {% for field in form  %}
 	{% if field.errors %}
