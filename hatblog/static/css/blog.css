@@ -204,16 +204,12 @@ table.commentform td.error textarea {
 	border: 1px solid red;
 }
 
-table.commentform td.error {
-	font-size: 11pt;
-}
-
-
 table.commentform td.error ul {
 	list-style: none;
 }
 
 table.commentform td.error li {
+	font-size: 11pt;
 	padding-left: 10px;
 }
 
