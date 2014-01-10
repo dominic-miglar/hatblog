@@ -21,7 +21,7 @@ input, select, textarea {
 }
 
 #header h1 {
-	font-size: 20pt;
+	font-size: 18pt;
 }
 
 #headercontent {
@@ -124,7 +124,7 @@ input, select, textarea {
 
 #stats h2 {
 	font-weight: bold;
-	font-size: 12pt;
+	font-size: 10pt;
 	color: #CDA869;
 }
 
@@ -136,7 +136,7 @@ input, select, textarea {
 
 #stats p, 
 #stats a {
-	font-size: 10pt;
+	font-size: 8pt;
 	margin-bottom: 0;
 	margin-top: 0;
 }
