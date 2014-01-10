@@ -157,7 +157,7 @@ label {
 }
 
 #contactform table th {
-	min-width: 300px;
+	width: 300px;
 	text-align: left;
 }
 
