@@ -1,5 +1,9 @@
 {% extends "weblog/base.html" %}
 
+{% block additional_scripts %}
+<script type="text/javascript" src="{% static 'js/jquery-2.0.3.min.js' %}" />
+{% endblock %}
+
 {% block content %}
 {% if commented %}
 <div class='information'>
@@ -10,9 +14,7 @@
 {% for field in form  %}
 	{% if field.errors %}
 		<script type="text/javascript">
-			/*window.location.hash = 'comments';
-			window.location.reload();*/
-			location.hash = "#" + "comments";
+			$(document).scrollTop( $("#comments").offset().top);  
 		</script>
 	{% endif %}
 {% endfor %}
